@@ -32,5 +32,5 @@ end_of_record
 ```
 
 > [!TIP]
-> See the [source code](https://github.com/CedX/Lcov.ps1/tree/main/src/Cmdlets) of this module
+> See the [source code](https://github.com/CedX/Lcov.ps1/tree/main/Sources/Cmdlets) of this module
 > for detailed information on the available cmdlets.

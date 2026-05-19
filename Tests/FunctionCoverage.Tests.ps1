@@ -1,5 +1,5 @@
-using module ../src/FunctionCoverage.psm1
-using module ../src/FunctionData.psm1
+using module ../Sources/FunctionCoverage.psm1
+using module ../Sources/FunctionData.psm1
 
 <#
 .SYNOPSIS

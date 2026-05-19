@@ -1,6 +1,6 @@
 using namespace System.Diagnostics.CodeAnalysis
-using module ../src/Report.psm1
-using module ../src/SourceFile.psm1
+using module ../Sources/Report.psm1
+using module ../Sources/SourceFile.psm1
 
 <#
 .SYNOPSIS
@@ -9,7 +9,7 @@ using module ../src/SourceFile.psm1
 Describe "Report" {
 	BeforeAll {
 		[SuppressMessage("PSUseDeclaredVarsMoreThanAssignments", "")]
-		$report = [Report]::Parse((Get-Content "$PSScriptRoot/../res/Lcov.info" -Raw))
+		$report = [Report]::Parse((Get-Content "$PSScriptRoot/../Resources/Lcov.info" -Raw))
 	}
 
 	Context "Parse" {

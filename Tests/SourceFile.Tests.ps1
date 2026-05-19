@@ -1,7 +1,7 @@
-using module ../src/BranchCoverage.psm1
-using module ../src/FunctionCoverage.psm1
-using module ../src/LineCoverage.psm1
-using module ../src/SourceFile.psm1
+using module ../Sources/BranchCoverage.psm1
+using module ../Sources/FunctionCoverage.psm1
+using module ../Sources/LineCoverage.psm1
+using module ../Sources/SourceFile.psm1
 
 <#
 .SYNOPSIS

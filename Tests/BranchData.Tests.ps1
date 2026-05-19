@@ -1,4 +1,4 @@
-using module ../src/BranchData.psm1
+using module ../Sources/BranchData.psm1
 
 <#
 .SYNOPSIS

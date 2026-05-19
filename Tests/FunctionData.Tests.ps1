@@ -1,4 +1,4 @@
-using module ../src/FunctionData.psm1
+using module ../Sources/FunctionData.psm1
 
 <#
 .SYNOPSIS

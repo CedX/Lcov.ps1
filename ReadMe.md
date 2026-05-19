@@ -3,8 +3,8 @@ Parse and format [LCOV](https://github.com/linux-test-project/lcov) coverage rep
 in [PowerShell](https://learn.microsoft.com/en-us/powershell).
 
 ## Documentation
-- [User guide](https://github.com/CedX/Lcov.ps1/tree/main/docs)
-- [Examples](https://github.com/CedX/Lcov.ps1/tree/main/example)
+- [User guide](https://github.com/CedX/Lcov.ps1/tree/main/Documentation)
+- [Examples](https://github.com/CedX/Lcov.ps1/tree/main/Examples)
 
 ## Development
 - [Git repository](https://github.com/CedX/Lcov.ps1)

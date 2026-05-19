@@ -1,4 +1,4 @@
-using module ../src/LineData.psm1
+using module ../Sources/LineData.psm1
 
 <#
 .SYNOPSIS

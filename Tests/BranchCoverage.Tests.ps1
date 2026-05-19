@@ -1,5 +1,5 @@
-using module ../src/BranchCoverage.psm1
-using module ../src/BranchData.psm1
+using module ../Sources/BranchCoverage.psm1
+using module ../Sources/BranchData.psm1
 
 <#
 .SYNOPSIS
