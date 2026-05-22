@@ -1,9 +1,6 @@
 using module ./BranchCoverage.psm1
-using module ./BranchData.psm1
 using module ./FunctionCoverage.psm1
-using module ./FunctionData.psm1
 using module ./LineCoverage.psm1
-using module ./LineData.psm1
 using module ./SourceFile.psm1
 using module ./Tokens.psm1
 
