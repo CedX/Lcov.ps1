@@ -3,9 +3,9 @@ using module ../Lcov.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `ConvertFrom-Info` cmdlet.
+	Tests the features of the `ConvertFrom-LcovInfo` cmdlet.
 #>
-Describe "ConvertFrom-Info" {
+Describe "ConvertFrom-LcovInfo" {
 	BeforeAll {
 		[SuppressMessage("PSUseDeclaredVarsMoreThanAssignments", "")]
 		$report = ConvertFrom-LcovInfo "$PSScriptRoot/../Resources" -Filter "*.info"
@@ -53,9 +53,9 @@ Describe "ConvertFrom-Info" {
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-BranchCoverage` cmdlet.
+	Tests the features of the `New-LcovBranchCoverage` cmdlet.
 #>
-Describe "New-BranchCoverage" {
+Describe "New-LcovBranchCoverage" {
 	It "should return a format like 'BRF:[Found]\nBRH:[Hit]'" {
 		$data = New-LcovBranchData -BlockNumber 3 -BranchNumber 2 -LineNumber 127 -Taken 1
 		New-LcovBranchCoverage | Should -BeExactly "BRF:0`nBRH:0"
@@ -65,9 +65,9 @@ Describe "New-BranchCoverage" {
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-BranchData` cmdlet.
+	Tests the features of the `New-LcovBranchData` cmdlet.
 #>
-Describe "New-BranchData" {
+Describe "New-LcovBranchData" {
 	It "should return a format like 'BRDA:[LineNumber],[BlockNumber],[BranchNumber],[Taken]'" {
 		New-LcovBranchData | Should -BeExactly "BRDA:0,0,0,-"
 		New-LcovBranchData -BlockNumber 3 -BranchNumber 2 -LineNumber 127 -Taken 1 | Should -BeExactly "BRDA:127,3,2,1"
@@ -76,9 +76,9 @@ Describe "New-BranchData" {
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-FunctionCoverage` cmdlet.
+	Tests the features of the `New-LcovFunctionCoverage` cmdlet.
 #>
-Describe "New-FunctionCoverage" {
+Describe "New-LcovFunctionCoverage" {
 	It "should return a format like 'FNF:[Found]\nFNH:[Hit]'" {
 		$data = New-LcovFunctionData -ExecutionCount 3 -FunctionName "main" -LineNumber 127
 		New-LcovFunctionCoverage | Should -BeExactly "FNF:0`nFNH:0"
@@ -88,9 +88,9 @@ Describe "New-FunctionCoverage" {
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-FunctionData` cmdlet.
+	Tests the features of the `New-LcovFunctionData` cmdlet.
 #>
-Describe "New-FunctionData" {
+Describe "New-LcovFunctionData" {
 	It "should return a format like 'FN:<LineNumber>,<FunctionName>\nFNDA:<ExecutionCount>,<FunctionName>'" {
 		New-LcovFunctionData -ExecutionCount 3 -FunctionName "main" -LineNumber 127 | Should -BeExactly "FN:127,main`nFNDA:3,main"
 	}
@@ -98,9 +98,9 @@ Describe "New-FunctionData" {
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-LineCoverage` cmdlet.
+	Tests the features of the `New-LcovLineCoverage` cmdlet.
 #>
-Describe "New-LineCoverage" {
+Describe "New-LcovLineCoverage" {
 	It "should return a format like 'LF:[Found]\nLH:[Hit]'" {
 		$data = New-LcovLineData -ExecutionCount 3 -LineNumber 127
 		New-LcovLineCoverage | Should -BeExactly "LF:0`nLH:0"
@@ -110,9 +110,9 @@ Describe "New-LineCoverage" {
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-LineData` cmdlet.
+	Tests the features of the `New-LcovLineData` cmdlet.
 #>
-Describe "New-LineData" {
+Describe "New-LcovLineData" {
 	It "should return a format like 'DA:[LineNumber],[ExecutionCount],[Checksum]'" {
 		New-LcovLineData | Should -BeExactly "DA:0,0"
 		New-LcovLineData -Checksum "ed076287532e86365e841e92bfc50d8c" -ExecutionCount 3 -LineNumber 127 | Should -BeExactly "DA:127,3,ed076287532e86365e841e92bfc50d8c"
