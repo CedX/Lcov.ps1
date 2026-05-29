@@ -37,7 +37,7 @@ function ConvertFrom-LcovInfo {
 		$parameters = @{ File = $true; Recurse = $Recurse }
 		if ($Filter) { $parameters.Filter = $Filter }
 
-		$files = $PSCmdlet.ParameterSetName -eq "LiteralPath" ? (Get-ChildItem -LiteralPath $LiteralPath @parameters) : (Get-ChildItem $Path @parameters)
+		$files = $LiteralPath ? (Get-ChildItem -LiteralPath $LiteralPath @parameters) : (Get-ChildItem $Path @parameters)
 		foreach ($file in $files) {
 			try { [Report]::Parse((Get-Content $file.FullName -Raw)) }
 			catch [FormatException] { Write-Error $_.Exception }
