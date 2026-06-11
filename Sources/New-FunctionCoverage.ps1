@@ -23,7 +23,7 @@ function New-FunctionCoverage {
 		[int] $Hit
 	)
 
-	[FunctionCoverage]@{
+	return [FunctionCoverage]@{
 		Data = $Data
 		Found = $Found
 		Hit = $Hit

@@ -23,7 +23,7 @@ function New-FunctionData {
 		[int] $LineNumber
 	)
 
-	[FunctionData]@{
+	return [FunctionData]@{
 		ExecutionCount = $ExecutionCount
 		FunctionName = $FunctionName
 		LineNumber = $LineNumber

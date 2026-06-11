@@ -23,7 +23,7 @@ function New-LineCoverage {
 		[int] $Hit
 	)
 
-	[LineCoverage]@{
+	return [LineCoverage]@{
 		Data = $Data
 		Found = $Found
 		Hit = $Hit

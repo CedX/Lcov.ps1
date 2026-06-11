@@ -23,7 +23,7 @@ function New-LineData {
 		[int] $LineNumber
 	)
 
-	[LineData]@{
+	return [LineData]@{
 		Checksum = $Checksum
 		ExecutionCount = $ExecutionCount
 		LineNumber = $LineNumber

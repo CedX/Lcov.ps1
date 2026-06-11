@@ -27,7 +27,7 @@ function New-BranchData {
 		[int] $Taken
 	)
 
-	[BranchData]@{
+	return [BranchData]@{
 		BlockNumber = $BlockNumber
 		BranchNumber = $BranchNumber
 		LineNumber = $LineNumber

@@ -23,7 +23,7 @@ function New-BranchCoverage {
 		[int] $Hit
 	)
 
-	[BranchCoverage]@{
+	return [BranchCoverage]@{
 		Data = $Data
 		Found = $Found
 		Hit = $Hit
