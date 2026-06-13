@@ -7,7 +7,7 @@ using module ../Lcov.psd1
 #>
 Describe "ConvertFrom-Info" {
 	BeforeAll {
-		[SuppressMessage("PSUseDeclaredVarsMoreThanAssignments", "")]
+		[SuppressMessage("PSUseDeclaredVarsMoreThanAssignments")]
 		$report = ConvertFrom-LcovInfo "$PSScriptRoot/../Resources" -Filter "*.info"
 	}
 
