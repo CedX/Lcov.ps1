@@ -9,7 +9,7 @@ Describe "New-Report" {
 		New-LcovReport "FooBar" | Should -BeExactly "TN:FooBar"
 
 		$sourceFile = New-LcovSourceFile "/home/CedX/Lcov.ps1/Program.psm1"
-		$report = New-LcovReport "LcovTest" @($sourceFile)
+		$report = New-LcovReport "LcovTest" $sourceFile
 		$report | Should -BeExactly "TN:LcovTest`n$sourceFile"
 	}
 }
