@@ -6,10 +6,10 @@ using module ../Lcov.psd1
 #>
 Describe "New-Report" {
 	It "should return a format like 'TN:[TestName]'" {
-		New-LcovReport "FooBar" | Should -BeExactly "TN:FooBar"
+		Should-BeString "TN:FooBar" (New-LcovReport "FooBar").ToString() -CaseSensitive
 
 		$sourceFile = New-LcovSourceFile "/home/CedX/Lcov.ps1/Program.psm1"
 		$report = New-LcovReport "LcovTest" $sourceFile
-		$report | Should -BeExactly "TN:LcovTest`n$sourceFile"
+		Should-BeString "TN:LcovTest`n$sourceFile" $report.ToString() -CaseSensitive
 	}
 }

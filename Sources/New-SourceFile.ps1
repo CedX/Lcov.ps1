@@ -11,7 +11,7 @@ function New-SourceFile {
 	[OutputType([Belin.Lcov.SourceFile])]
 	param (
 		# The path to the source file.
-		[Parameter(Mandatory, Position = 0)]
+		[Parameter(Mandatory, Position = 1)]
 		[string] $Path,
 
 		# The branch coverage.

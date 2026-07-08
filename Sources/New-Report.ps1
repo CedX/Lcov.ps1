@@ -11,11 +11,11 @@ function New-Report {
 	[OutputType([Belin.Lcov.Report])]
 	param (
 		# The test name.
-		[Parameter(Mandatory, Position = 0)]
+		[Parameter(Mandatory, Position = 1)]
 		[string] $TestName,
 
 		# The source file list.
-		[Parameter(Position = 1)]
+		[Parameter(Position = 2)]
 		[ValidateNotNull()]
 		[SourceFile[]] $SourceFiles = @()
 	)

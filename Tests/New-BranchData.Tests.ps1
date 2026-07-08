@@ -6,7 +6,7 @@ using module ../Lcov.psd1
 #>
 Describe "New-BranchData" {
 	It "should return a format like 'BRDA:[LineNumber],[BlockNumber],[BranchNumber],[Taken]'" {
-		New-LcovBranchData | Should -BeExactly "BRDA:0,0,0,-"
-		New-LcovBranchData -BlockNumber 3 -BranchNumber 2 -LineNumber 127 -Taken 1 | Should -BeExactly "BRDA:127,3,2,1"
+		Should-BeString "BRDA:0,0,0,-" (New-LcovBranchData).ToString() -CaseSensitive
+		Should-BeString "BRDA:127,3,2,1" (New-LcovBranchData -BlockNumber 3 -BranchNumber 2 -LineNumber 127 -Taken 1).ToString() -CaseSensitive
 	}
 }

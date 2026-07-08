@@ -11,7 +11,7 @@ function New-FunctionData {
 	[OutputType([Belin.Lcov.FunctionData])]
 	param (
 		# The function name.
-		[Parameter(Mandatory, Position = 0)]
+		[Parameter(Mandatory, Position = 1)]
 		[string] $FunctionName,
 
 		# The execution count.

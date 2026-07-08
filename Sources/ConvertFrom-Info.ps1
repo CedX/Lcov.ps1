@@ -13,7 +13,7 @@ function ConvertFrom-Info {
 	[OutputType([Belin.Lcov.Report])]
 	param (
 		# The path to the LCOV file to convert.
-		[Parameter(Mandatory, ParameterSetName = "Path", Position = 0, ValueFromPipeline)]
+		[Parameter(Mandatory, ParameterSetName = "Path", Position = 1, ValueFromPipeline)]
 		[SupportsWildcards()]
 		[string[]] $Path,
 
