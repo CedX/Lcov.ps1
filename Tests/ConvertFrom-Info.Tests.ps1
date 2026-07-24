@@ -16,7 +16,7 @@ Describe "ConvertFrom-Info" {
 	}
 
 	It "should contain three source files" {
-		Should-Be 3 $report.SourceFiles.Count
+		Should-BeCollection $report.SourceFiles -Count 3
 		Should-BeString "/home/CedX/Lcov.ps1/Fixture.psm1" $report.SourceFiles[0].Path -CaseSensitive
 		Should-BeString "/home/CedX/Lcov.ps1/Func1.psm1" $report.SourceFiles[1].Path -CaseSensitive
 		Should-BeString "/home/CedX/Lcov.ps1/Func2.psm1" $report.SourceFiles[2].Path -CaseSensitive
@@ -26,7 +26,7 @@ Describe "ConvertFrom-Info" {
 		$branches = $report.SourceFiles[1].Branches
 		Should-Be 4 $branches.Found
 		Should-Be 4 $branches.Hit
-		Should-Be 4 $branches.Data.Count
+		Should-BeCollection $branches.Data -Count 4
 		Should-Be 8 $branches.Data[0].LineNumber
 	}
 
@@ -34,7 +34,7 @@ Describe "ConvertFrom-Info" {
 		$functions = $report.SourceFiles[1].Functions
 		Should-Be 1 $functions.Found
 		Should-Be 1 $functions.Hit
-		Should-Be 1 $functions.Data.Count
+		Should-BeCollection $functions.Data -Count 1
 		Should-BeString "func1" $functions.Data[0].FunctionName -CaseSensitive
 	}
 
@@ -42,7 +42,7 @@ Describe "ConvertFrom-Info" {
 		$lines = $report.SourceFiles[1].Lines
 		Should-Be 9 $lines.Found
 		Should-Be 9 $lines.Hit
-		Should-Be 9 $lines.Data.Count
+		Should-BeCollection $lines.Data -Count 9
 		Should-BeString "5kX7OTfHFcjnS98fjeVqNA" $lines.Data[0].Checksum -CaseSensitive
 	}
 
