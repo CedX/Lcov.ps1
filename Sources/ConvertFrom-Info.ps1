@@ -23,7 +23,7 @@ function ConvertFrom-Info {
 		[string[]] $LiteralPath,
 
 		# A pattern used to filter the list of files to be processed.
-		[string] $Filter = "",
+		[string] $Filter,
 
 		# Value indicating whether to process the input path recursively.
 		[switch] $Recurse

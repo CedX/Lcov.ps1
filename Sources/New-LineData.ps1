@@ -12,7 +12,7 @@ function New-LineData {
 	param (
 		# The data checksum.
 		[ValidateNotNull()]
-		[string] $Checksum = "",
+		[string] $Checksum,
 
 		# The execution count.
 		[ValidateRange("NonNegative")]
