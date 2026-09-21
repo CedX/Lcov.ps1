@@ -6,7 +6,7 @@ in [PowerShell](https://learn.microsoft.com/en-us/powershell).
 Install the latest version of **LCOV Reports for PowerShell**
 with [PSResourceGet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.psresourceget) package manager:
 
-```shell
+```powershell
 Install-PSResource Belin.Lcov
 ```
 
