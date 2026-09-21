@@ -2,7 +2,7 @@
 The `ConvertFrom-LcovInfo` cmdlet parses a [LCOV](https://github.com/linux-test-project/lcov) info file,
 and creates a `Report` instance giving detailed information about this coverage report:
 
-```pwsh
+```powershell
 using module Belin.Lcov
 
 $report = ConvertFrom-LcovInfo "/path/to/lcov.info"
