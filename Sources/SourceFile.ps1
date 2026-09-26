@@ -7,7 +7,7 @@ using namespace Belin.Lcov
 	The newly created source file.
 #>
 function New-SourceFile {
-	[CmdletBinding()]
+	[CmdletBinding(DefaultParameterSetName = "TODO")]
 	[OutputType([Belin.Lcov.SourceFile])]
 	param (
 		# The path to the source file.
@@ -15,18 +15,25 @@ function New-SourceFile {
 		[string] $Path,
 
 		# The branch coverage.
+		[Parameter(ParameterSetName = "TODO")]
 		[BranchCoverage] $Branches,
 
 		# The function coverage.
+		[Parameter(ParameterSetName = "TODO")]
 		[FunctionCoverage] $Functions,
 
 		# The line coverage.
-		[LineCoverage] $Lines
+		[Parameter(ParameterSetName = "TODO")]
+		[LineCoverage] $Lines,
+
+		# Value indicating whether to populate the instance with default coverage values.
+		[Parameter(ParameterSetName = "WithCoverage")]
+		[switch] $WithCoverage
 	)
 
 	$sourceFile = [SourceFile]::new($Path)
-	$sourceFile.Branches = $Branches
-	$sourceFile.Functions = $Functions
-	$sourceFile.Lines = $Lines
+	$sourceFile.Branches = $WithCoverage ? (New-BranchCoverage) : $Branches
+	$sourceFile.Functions = $WithCoverage ? (New-FunctionCoverage) : $Functions
+	$sourceFile.Lines = $WithCoverage ? (New-LineCoverage) : $Lines
 	$sourceFile
 }
