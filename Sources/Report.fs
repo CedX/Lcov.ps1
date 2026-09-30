@@ -29,12 +29,10 @@ type ConvertFromInfoCommand () =
 
   /// Performs execution of this command.
   override this.ProcessRecord () =
-    use getChildItem = PowerShell.Create(RunspaceMode.CurrentRunspace).AddCommand "Get-ChildItem"
-    getChildItem.AddParameter("File").AddParameter "Recurse" |> ignore
-    if this.Filter.Length > 0 then getChildItem.AddParameter("Filter", this.Filter) |> ignore
-
-    if this.ParameterSetName = "LiteralPath" then getChildItem.AddParameter("LiteralPath", this.LiteralPath) |> ignore
-    else getChildItem.AddParameter("Path", this.Path) |> ignore
+    use getChildItem = PowerShell.Create(RunspaceMode.CurrentRunspace).AddCommand("Get-ChildItem").AddParameter("File").AddParameter "Recurse"
+    if this.Filter.Length > 0 then  getChildItem.AddParameter("Filter", this.Filter) |> ignore<PowerShell>
+    if this.ParameterSetName = "Path" then getChildItem.AddParameter("Path", this.Path) |> ignore<PowerShell>
+    else getChildItem.AddParameter("LiteralPath", this.LiteralPath) |> ignore<PowerShell>
 
     for file in getChildItem.Invoke<FileInfo>() do
       try this.WriteObject (Report.Parse (File.ReadAllText file.FullName))
