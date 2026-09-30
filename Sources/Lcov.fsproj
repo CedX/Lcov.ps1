@@ -16,11 +16,21 @@
 		<Nullable>enable</Nullable>
 		<OutDir>../Binaries</OutDir>
 		<RootNamespace>Belin.Lcov</RootNamespace>
+		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
 		<TargetFramework>net10.0</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<InternalsVisibleTo Include="$(RootNamespace).Tests" />
 		<PackageReference Include="Belin.Lcov" Version="5.0.1" />
+		<PackageReference Include="System.Management.Automation" Version="7.6.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="BranchCoverage.fs" />
+		<Compile Include="FunctionCoverage.fs" />
+		<Compile Include="LineCoverage.fs" />
+		<Compile Include="Report.fs" />
+		<Compile Include="SourceFile.fs" />
 	</ItemGroup>
 </Project>
