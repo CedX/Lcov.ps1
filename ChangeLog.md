@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [3.0.1](https://github.com/CedX/Lcov.ps1/compare/v3.0.0...v3.0.1)
+- Fixed a packaging issue.
+
 ## Version [3.0.0](https://github.com/CedX/Lcov.ps1/compare/v2.0.1...v3.0.0)
 - Ported the cmdlets to [F#](https://learn.microsoft.com/en-us/dotnet/fsharp).
 
