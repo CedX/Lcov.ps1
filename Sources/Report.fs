@@ -34,9 +34,14 @@ type ConvertFromInfoCommand () =
     if this.ParameterSetName = "Path" then getChildItem.AddParameter("Path", this.Path) |> ignore<PowerShell>
     else getChildItem.AddParameter("LiteralPath", this.LiteralPath) |> ignore<PowerShell>
 
-    for file in getChildItem.Invoke<FileInfo>() do
-      try this.WriteObject (Report.Parse (File.ReadAllText file.FullName))
-      with :? FormatException as ex -> this.WriteError (ErrorRecord(ex, "Report.Parse", ErrorCategory.ParserError, file))
+    let output = getChildItem.Invoke<FileInfo>()
+    if getChildItem.HadErrors then
+      let ex = getChildItem.Streams.Error[0].Exception
+      this.WriteError (ErrorRecord(ex, "PowerShell.Invoke", ErrorCategory.OperationStopped, getChildItem))
+    else
+      for file in output do
+        try this.WriteObject (Report.Parse (File.ReadAllText file.FullName))
+        with :? FormatException as ex -> this.WriteError (ErrorRecord(ex, "Report.Parse", ErrorCategory.SyntaxError, file))
 
 /// Creates a new report.
 [<Cmdlet(VerbsCommon.New, "Report")>]
