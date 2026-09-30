@@ -2,7 +2,8 @@
 	DefaultCommandPrefix = "Lcov"
 	ModuleVersion = "2.0.1"
 	PowerShellVersion = "7.6"
-	RootModule = "Sources/Main.psm1"
+	RootModule = "Binaries/Belin.Lcov.PowerShell.dll"
+	NestedModules = , "Sources/Main.psm1"
 
 	Author = "Cédric Belin <cedx@outlook.com>"
 	CompanyName = "Cedric-Belin.fr"
@@ -11,12 +12,10 @@
 	GUID = "158416ed-ea32-4bcf-ac5d-8c555ad917e5"
 
 	AliasesToExport = @()
-	CmdletsToExport = @()
 	RequiredAssemblies = , "Binaries/Belin.Lcov.dll"
 	VariablesToExport = @()
 
-	FunctionsToExport = @(
-		"ConvertFrom-Info"
+	CmdletsToExport = @(
 		"New-BranchCoverage"
 		"New-BranchData"
 		"New-FunctionCoverage"
@@ -25,6 +24,14 @@
 		"New-LineData"
 		"New-Report"
 		"New-SourceFile"
+	)
+
+	FunctionsToExport = @(
+		"ConvertFrom-Info"
+	)
+
+	RequiredModules = @(
+		@{ ModuleName = "Belin.FSharp"; ModuleVersion = "10.1.401" }
 	)
 
 	PrivateData = @{
