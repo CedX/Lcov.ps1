@@ -3,7 +3,6 @@
 	ModuleVersion = "3.0.0"
 	PowerShellVersion = "7.6"
 	RootModule = "Binaries/Belin.Lcov.PowerShell.dll"
-	NestedModules = , "Sources/Main.psm1"
 
 	Author = "Cédric Belin <cedx@outlook.com>"
 	CompanyName = "Cedric-Belin.fr"
@@ -12,10 +11,12 @@
 	GUID = "158416ed-ea32-4bcf-ac5d-8c555ad917e5"
 
 	AliasesToExport = @()
+	FunctionsToExport = @()
 	RequiredAssemblies = , "Binaries/Belin.Lcov.dll"
 	VariablesToExport = @()
 
 	CmdletsToExport = @(
+		"ConvertFrom-Info"
 		"New-BranchCoverage"
 		"New-BranchData"
 		"New-FunctionCoverage"
@@ -24,10 +25,6 @@
 		"New-LineData"
 		"New-Report"
 		"New-SourceFile"
-	)
-
-	FunctionsToExport = @(
-		"ConvertFrom-Info"
 	)
 
 	RequiredModules = @(
