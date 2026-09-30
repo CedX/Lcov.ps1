@@ -1,6 +1,6 @@
 @{
 	DefaultCommandPrefix = "Lcov"
-	ModuleVersion = "2.0.1"
+	ModuleVersion = "3.0.0"
 	PowerShellVersion = "7.6"
 	RootModule = "Binaries/Belin.Lcov.PowerShell.dll"
 	NestedModules = , "Sources/Main.psm1"
