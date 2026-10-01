@@ -30,7 +30,7 @@ type ConvertFromInfoCommand () =
   /// Performs execution of this command.
   override this.ProcessRecord () =
     use getChildItem = PowerShell.Create(RunspaceMode.CurrentRunspace).AddCommand("Get-ChildItem").AddParameter("File").AddParameter "Recurse"
-    if this.Filter.Length > 0 then  getChildItem.AddParameter("Filter", this.Filter) |> ignore<PowerShell>
+    if this.Filter.Length > 0 then getChildItem.AddParameter("Filter", this.Filter) |> ignore<PowerShell>
     if this.ParameterSetName = "Path" then getChildItem.AddParameter("Path", this.Path) |> ignore<PowerShell>
     else getChildItem.AddParameter("LiteralPath", this.LiteralPath) |> ignore<PowerShell>
 
