@@ -30,19 +30,15 @@ type ConvertFromInfoCommand() =
 
   /// Performs execution of this command.
   override this.ProcessRecord () =
-    let script = StringBuilder("Get-ChildItem -File").Append(if this.Recurse.IsPresent then " -Recurse" else "")
+    let script =
+      StringBuilder("Get-ChildItem -File")
+        .Append(if this.ParameterSetName = "Path" then " -Path $args[0]" else " -LiteralPath $args[0]")
+        .Append(if this.Filter.Length > 0 then " -Filter $args[1]" else "")
+        .Append(if this.Recurse.IsPresent then " -Recurse" else "")
+
     let parameters = ResizeArray<obj>()
-
-    if this.ParameterSetName = "Path" then
-      script.Append " -Path $args[0]" |> ignore<StringBuilder>
-      parameters.Add this.Path
-    else
-      script.Append " -LiteralPath $args[0]" |> ignore<StringBuilder>
-      parameters.Add this.LiteralPath
-
-    if this.Filter.Length > 0 then
-      script.Append " -Filter $args[1]" |> ignore<StringBuilder>
-      parameters.Add this.Filter
+    parameters.Add(if this.ParameterSetName = "Path" then this.Path else this.LiteralPath)
+    if this.Filter.Length > 0 then parameters.Add this.Filter
 
     for psObject in this.InvokeCommand.InvokeScript(string script, parameters.ToArray()) do
       let file = psObject.BaseObject :?> FileInfo
