@@ -3,8 +3,7 @@ namespace Belin.Lcov
 open System.Management.Automation
 
 /// Creates a new branch coverage.
-[<Cmdlet(VerbsCommon.New, "BranchCoverage")>]
-[<OutputType(typeof<BranchCoverage>)>]
+[<Cmdlet(VerbsCommon.New, "BranchCoverage"); OutputType(typeof<BranchCoverage>)>]
 type NewBranchCoverageCommand() =
   inherit Cmdlet()
 
@@ -28,8 +27,7 @@ type NewBranchCoverageCommand() =
   ))
 
 /// Creates new branch data.
-[<Cmdlet(VerbsCommon.New, "BranchData")>]
-[<OutputType(typeof<BranchData>)>]
+[<Cmdlet(VerbsCommon.New, "BranchData"); OutputType(typeof<BranchData>)>]
 type NewBranchDataCommand() =
   inherit Cmdlet()
 

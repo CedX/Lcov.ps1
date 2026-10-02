@@ -3,8 +3,7 @@ namespace Belin.Lcov
 open System.Management.Automation
 
 /// Creates a new line coverage.
-[<Cmdlet(VerbsCommon.New, "LineCoverage")>]
-[<OutputType(typeof<LineCoverage>)>]
+[<Cmdlet(VerbsCommon.New, "LineCoverage"); OutputType(typeof<LineCoverage>)>]
 type NewLineCoverageCommand() =
   inherit Cmdlet()
 
@@ -28,8 +27,7 @@ type NewLineCoverageCommand() =
   ))
 
 /// Creates new line data.
-[<Cmdlet(VerbsCommon.New, "LineData")>]
-[<OutputType(typeof<LineData>)>]
+[<Cmdlet(VerbsCommon.New, "LineData"); OutputType(typeof<LineData>)>]
 type NewLineDataCommand() =
   inherit Cmdlet()
 

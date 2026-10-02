@@ -3,8 +3,7 @@ namespace Belin.Lcov
 open System.Management.Automation
 
 /// Creates a new source file.
-[<Cmdlet(VerbsCommon.New, "SourceFile", DefaultParameterSetName = "Default")>]
-[<OutputType(typeof<SourceFile>)>]
+[<Cmdlet(VerbsCommon.New, "SourceFile", DefaultParameterSetName = "Default"); OutputType(typeof<SourceFile>)>]
 type NewSourceFileCommand() =
   inherit Cmdlet()
 

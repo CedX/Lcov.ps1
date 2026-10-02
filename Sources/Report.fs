@@ -6,8 +6,7 @@ open System.Management.Automation
 open System.Text
 
 /// Converts the contents of a LCOV info file into a `Report` object.
-[<Cmdlet(VerbsData.ConvertFrom, "Info", DefaultParameterSetName = "Path")>]
-[<OutputType(typeof<Report>)>]
+[<Cmdlet(VerbsData.ConvertFrom, "Info", DefaultParameterSetName = "Path"); OutputType(typeof<Report>)>]
 type ConvertFromInfoCommand() =
   inherit PSCmdlet()
 
@@ -46,8 +45,7 @@ type ConvertFromInfoCommand() =
       with :? FormatException as ex -> this.WriteError (ErrorRecord(ex, "Report.Parse", ErrorCategory.SyntaxError, file))
 
 /// Creates a new report.
-[<Cmdlet(VerbsCommon.New, "Report")>]
-[<OutputType(typeof<Report>)>]
+[<Cmdlet(VerbsCommon.New, "Report"); OutputType(typeof<Report>)>]
 type NewReportCommand() =
   inherit Cmdlet()
 

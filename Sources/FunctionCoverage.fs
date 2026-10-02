@@ -3,8 +3,7 @@ namespace Belin.Lcov
 open System.Management.Automation
 
 /// Creates a new function coverage.
-[<Cmdlet(VerbsCommon.New, "FunctionCoverage")>]
-[<OutputType(typeof<FunctionCoverage>)>]
+[<Cmdlet(VerbsCommon.New, "FunctionCoverage"); OutputType(typeof<FunctionCoverage>)>]
 type NewFunctionCoverageCommand() =
   inherit Cmdlet()
 
@@ -28,8 +27,7 @@ type NewFunctionCoverageCommand() =
   ))
 
 /// Creates new function data.
-[<Cmdlet(VerbsCommon.New, "FunctionData")>]
-[<OutputType(typeof<FunctionData>)>]
+[<Cmdlet(VerbsCommon.New, "FunctionData"); OutputType(typeof<FunctionData>)>]
 type NewFunctionDataCommand() =
   inherit Cmdlet()
 
