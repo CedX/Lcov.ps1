@@ -3,6 +3,7 @@ namespace Belin.Lcov
 open System
 open System.IO
 open System.Management.Automation
+open System.Text
 
 /// Converts the contents of a LCOV info file into a `Report` object.
 [<Cmdlet(VerbsData.ConvertFrom, "Info", DefaultParameterSetName = "Path")>]
@@ -29,19 +30,24 @@ type ConvertFromInfoCommand() =
 
   /// Performs execution of this command.
   override this.ProcessRecord () =
-    use getChildItem = PowerShell.Create(RunspaceMode.CurrentRunspace).AddCommand("Get-ChildItem").AddParameter("File").AddParameter "Recurse"
-    if this.Filter.Length > 0 then getChildItem.AddParameter("Filter", this.Filter) |> ignore<PowerShell>
-    if this.ParameterSetName = "Path" then getChildItem.AddParameter("Path", this.Path) |> ignore<PowerShell>
-    else getChildItem.AddParameter("LiteralPath", this.LiteralPath) |> ignore<PowerShell>
+    let script = StringBuilder("Get-ChildItem -File").Append(if this.Recurse.IsPresent then " -Recurse" else "")
+    let parameters = ResizeArray<obj>()
 
-    let output = getChildItem.Invoke<FileInfo>()
-    if getChildItem.HadErrors then
-      let ex = getChildItem.Streams.Error[0].Exception
-      this.WriteError (ErrorRecord(ex, "PowerShell.Invoke", ErrorCategory.OperationStopped, getChildItem))
+    if this.ParameterSetName = "Path" then
+      script.Append " -Path $args[0]" |> ignore<StringBuilder>
+      parameters.Add this.Path
     else
-      for file in output do
-        try this.WriteObject (Report.Parse (File.ReadAllText file.FullName))
-        with :? FormatException as ex -> this.WriteError (ErrorRecord(ex, "Report.Parse", ErrorCategory.SyntaxError, file))
+      script.Append " -LiteralPath $args[0]" |> ignore<StringBuilder>
+      parameters.Add this.LiteralPath
+
+    if this.Filter.Length > 0 then
+      script.Append " -Filter $args[1]" |> ignore<StringBuilder>
+      parameters.Add this.Filter
+
+    for psObject in this.InvokeCommand.InvokeScript(string script, parameters.ToArray()) do
+      let file = psObject.BaseObject :?> FileInfo
+      try this.WriteObject (Report.Parse (File.ReadAllText file.FullName))
+      with :? FormatException as ex -> this.WriteError (ErrorRecord(ex, "Report.Parse", ErrorCategory.SyntaxError, file))
 
 /// Creates a new report.
 [<Cmdlet(VerbsCommon.New, "Report")>]
