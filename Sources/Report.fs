@@ -42,7 +42,7 @@ type ConvertFromInfoCommand() =
 
     for psObject in this.InvokeCommand.InvokeScript(string script, parameters.ToArray()) do
       let file = psObject.BaseObject :?> FileInfo
-      try this.WriteObject (Report.Parse (File.ReadAllText file.FullName))
+      try file.FullName |> File.ReadAllText |> Report.Parse |> this.WriteObject
       with :? FormatException as ex -> this.WriteError (ErrorRecord(ex, "Report.Parse", ErrorCategory.SyntaxError, file))
 
 /// Creates a new report.
