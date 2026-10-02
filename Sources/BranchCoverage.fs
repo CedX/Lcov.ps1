@@ -5,8 +5,8 @@ open System.Management.Automation
 /// Creates a new branch coverage.
 [<Cmdlet(VerbsCommon.New, "BranchCoverage")>]
 [<OutputType(typeof<BranchCoverage>)>]
-type NewBranchCoverageCommand () =
-  inherit Cmdlet ()
+type NewBranchCoverageCommand() =
+  inherit Cmdlet()
 
   /// The coverage data.
   [<Parameter; ValidateNotNull>]
@@ -30,8 +30,8 @@ type NewBranchCoverageCommand () =
 /// Creates new branch data.
 [<Cmdlet(VerbsCommon.New, "BranchData")>]
 [<OutputType(typeof<BranchData>)>]
-type NewBranchDataCommand () =
-  inherit Cmdlet ()
+type NewBranchDataCommand() =
+  inherit Cmdlet()
 
   /// The block number.
   [<Parameter; ValidateRange(ValidateRangeKind.NonNegative)>]

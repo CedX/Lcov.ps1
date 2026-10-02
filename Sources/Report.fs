@@ -7,8 +7,8 @@ open System.Management.Automation
 /// Converts the contents of a LCOV info file into a `Report` object.
 [<Cmdlet(VerbsData.ConvertFrom, "Info", DefaultParameterSetName = "Path")>]
 [<OutputType(typeof<Report>)>]
-type ConvertFromInfoCommand () =
-  inherit PSCmdlet ()
+type ConvertFromInfoCommand() =
+  inherit PSCmdlet()
 
   /// The path to the LCOV file to convert.
   [<Parameter(Mandatory = true, ParameterSetName = "Path", Position = 1, ValueFromPipeline = true)>]
@@ -46,8 +46,8 @@ type ConvertFromInfoCommand () =
 /// Creates a new report.
 [<Cmdlet(VerbsCommon.New, "Report")>]
 [<OutputType(typeof<Report>)>]
-type NewReportCommand () =
-  inherit Cmdlet ()
+type NewReportCommand() =
+  inherit Cmdlet()
 
   /// The test name.
   [<Parameter(Mandatory = true, Position = 1)>]

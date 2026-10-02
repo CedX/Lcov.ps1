@@ -5,8 +5,8 @@ open System.Management.Automation
 /// Creates a new function coverage.
 [<Cmdlet(VerbsCommon.New, "FunctionCoverage")>]
 [<OutputType(typeof<FunctionCoverage>)>]
-type NewFunctionCoverageCommand () =
-  inherit Cmdlet ()
+type NewFunctionCoverageCommand() =
+  inherit Cmdlet()
 
   /// The coverage data.
   [<Parameter; ValidateNotNull>]
@@ -30,8 +30,8 @@ type NewFunctionCoverageCommand () =
 /// Creates new function data.
 [<Cmdlet(VerbsCommon.New, "FunctionData")>]
 [<OutputType(typeof<FunctionData>)>]
-type NewFunctionDataCommand () =
-  inherit Cmdlet ()
+type NewFunctionDataCommand() =
+  inherit Cmdlet()
 
   /// The function name.
   [<Parameter(Mandatory = true, Position = 1)>]
