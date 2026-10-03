@@ -12,42 +12,42 @@ Describe "ConvertFrom-Info" {
 	}
 
 	It "should have a test name" {
-		Should-BeString "Example" $report.TestName -CaseSensitive
+		$report.TestName | Should-BeString "Example" -CaseSensitive
 	}
 
 	It "should contain three source files" {
-		Should-BeCollection $report.SourceFiles -Count 3
-		Should-BeString "/home/CedX/Lcov.ps1/Fixture.psm1" $report.SourceFiles[0].Path -CaseSensitive
-		Should-BeString "/home/CedX/Lcov.ps1/Func1.psm1" $report.SourceFiles[1].Path -CaseSensitive
-		Should-BeString "/home/CedX/Lcov.ps1/Func2.psm1" $report.SourceFiles[2].Path -CaseSensitive
+		$report.SourceFiles | Should-BeCollection -Count 3
+		$report.SourceFiles[0].Path | Should-BeString "/home/CedX/Lcov.ps1/Fixture.psm1" -CaseSensitive
+		$report.SourceFiles[1].Path | Should-BeString "/home/CedX/Lcov.ps1/Func1.psm1" -CaseSensitive
+		$report.SourceFiles[2].Path | Should-BeString "/home/CedX/Lcov.ps1/Func2.psm1" -CaseSensitive
 	}
 
 	It "should have detailed branch coverage" {
 		$branches = $report.SourceFiles[1].Branches
-		Should-Be 4 $branches.Found
-		Should-Be 4 $branches.Hit
-		Should-BeCollection $branches.Data -Count 4
-		Should-Be 8 $branches.Data[0].LineNumber
+		$branches.Found | Should-Be 4
+		$branches.Hit | Should-Be 4
+		$branches.Data | Should-BeCollection -Count 4
+		$branches.Data[0].LineNumber | Should-Be 8
 	}
 
 	It "should have detailed function coverage" {
 		$functions = $report.SourceFiles[1].Functions
-		Should-Be 1 $functions.Found
-		Should-Be 1 $functions.Hit
-		Should-BeCollection $functions.Data -Count 1
-		Should-BeString "func1" $functions.Data[0].FunctionName -CaseSensitive
+		$functions.Found | Should-Be 1
+		$functions.Hit | Should-Be 1
+		$functions.Data | Should-BeCollection -Count 1
+		$functions.Data[0].FunctionName | Should-BeString "func1" -CaseSensitive
 	}
 
 	It "should have detailed line coverage" {
 		$lines = $report.SourceFiles[1].Lines
-		Should-Be 9 $lines.Found
-		Should-Be 9 $lines.Hit
-		Should-BeCollection $lines.Data -Count 9
-		Should-BeString "5kX7OTfHFcjnS98fjeVqNA" $lines.Data[0].Checksum -CaseSensitive
+		$lines.Found | Should-Be 9
+		$lines.Hit | Should-Be 9
+		$lines.Data | Should-BeCollection -Count 9
+		$lines.Data[0].Checksum | Should-BeString "5kX7OTfHFcjnS98fjeVqNA" -CaseSensitive
 	}
 
 	It "should throw if the report has an invalid format" {
-		Should-Throw -ScriptBlock { ConvertFrom-LcovInfo $PSCommandPath -ErrorAction Stop }
+		{ ConvertFrom-LcovInfo $PSCommandPath -ErrorAction Stop } | Should-Throw
 	}
 }
 
@@ -57,10 +57,10 @@ Describe "ConvertFrom-Info" {
 #>
 Describe "New-Report" {
 	It "should return a format like 'TN:[TestName]'" {
-		Should-BeString "TN:FooBar" (New-LcovReport "FooBar").ToString() -CaseSensitive
+		(New-LcovReport "FooBar").ToString() | Should-BeString "TN:FooBar" -CaseSensitive
 
 		$sourceFile = New-LcovSourceFile "/home/CedX/Lcov.ps1/Program.psm1"
 		$report = New-LcovReport "LcovTest" $sourceFile
-		Should-BeString "TN:LcovTest`n$sourceFile" $report.ToString() -CaseSensitive
+		$report.ToString() | Should-BeString "TN:LcovTest`n$sourceFile" -CaseSensitive
 	}
 }
