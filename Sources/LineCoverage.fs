@@ -4,7 +4,7 @@ open System.Management.Automation
 
 /// Creates a new line coverage.
 [<Cmdlet(VerbsCommon.New, "LineCoverage"); OutputType(typeof<LineCoverage>)>]
-type NewLineCoverageCommand() =
+type NewLineCoverage() =
   inherit Cmdlet()
 
   /// The coverage data.
@@ -28,7 +28,7 @@ type NewLineCoverageCommand() =
 
 /// Creates new line data.
 [<Cmdlet(VerbsCommon.New, "LineData"); OutputType(typeof<LineData>)>]
-type NewLineDataCommand() =
+type NewLineData() =
   inherit Cmdlet()
 
   /// The data checksum.

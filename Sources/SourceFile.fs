@@ -4,7 +4,7 @@ open System.Management.Automation
 
 /// Creates a new source file.
 [<Cmdlet(VerbsCommon.New, "SourceFile", DefaultParameterSetName = "Default"); OutputType(typeof<SourceFile>)>]
-type NewSourceFileCommand() =
+type NewSourceFile() =
   inherit Cmdlet()
 
   /// The path to the source file.

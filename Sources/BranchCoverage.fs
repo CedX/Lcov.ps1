@@ -4,7 +4,7 @@ open System.Management.Automation
 
 /// Creates a new branch coverage.
 [<Cmdlet(VerbsCommon.New, "BranchCoverage"); OutputType(typeof<BranchCoverage>)>]
-type NewBranchCoverageCommand() =
+type NewBranchCoverage() =
   inherit Cmdlet()
 
   /// The coverage data.
@@ -28,7 +28,7 @@ type NewBranchCoverageCommand() =
 
 /// Creates new branch data.
 [<Cmdlet(VerbsCommon.New, "BranchData"); OutputType(typeof<BranchData>)>]
-type NewBranchDataCommand() =
+type NewBranchData() =
   inherit Cmdlet()
 
   /// The block number.

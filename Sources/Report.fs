@@ -7,7 +7,7 @@ open System.Text
 
 /// Converts the contents of a LCOV info file into a `Report` object.
 [<Cmdlet(VerbsData.ConvertFrom, "Info", DefaultParameterSetName = "Path"); OutputType(typeof<Report>)>]
-type ConvertFromInfoCommand() =
+type ConvertFromInfo() =
   inherit PSCmdlet()
 
   /// The path to the LCOV file to convert.
@@ -46,7 +46,7 @@ type ConvertFromInfoCommand() =
 
 /// Creates a new report.
 [<Cmdlet(VerbsCommon.New, "Report"); OutputType(typeof<Report>)>]
-type NewReportCommand() =
+type NewReport() =
   inherit Cmdlet()
 
   /// The test name.
