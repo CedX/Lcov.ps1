@@ -8,7 +8,7 @@ using module ../Lcov.psd1
 Describe "ConvertFrom-Info" {
 	BeforeAll {
 		[SuppressMessage("PSUseDeclaredVarsMoreThanAssignments", "report")]
-		$report = ConvertFrom-LcovInfo "$PSScriptRoot/../Resources" -Filter "*.info"
+		$report = "$PSScriptRoot/../Resources" | ConvertFrom-LcovInfo -Filter *.info
 	}
 
 	It "should have a test name" {

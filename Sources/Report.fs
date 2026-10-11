@@ -39,7 +39,7 @@ type ConvertFromInfo() =
     parameters.Add(if this.ParameterSetName = "Path" then this.Path else this.LiteralPath)
     if this.Filter.Length > 0 then parameters.Add this.Filter
 
-    for psObject in this.InvokeCommand.InvokeScript(string script, parameters.ToArray()) do
+    for psObject in ScriptBlock.Create(string script).Invoke(parameters.ToArray()) do
       let file = psObject.BaseObject :?> FileInfo
       try file.FullName |> File.ReadAllText |> Report.Parse |> this.WriteObject
       with :? FormatException as ex -> this.WriteError (ErrorRecord(ex, "Report.Parse", ErrorCategory.SyntaxError, file))
