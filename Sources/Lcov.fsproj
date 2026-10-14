@@ -4,7 +4,7 @@
 		<Copyright>© Cédric Belin</Copyright>
 		<Description>Parse and format to LCOV your code coverage reports.</Description>
 		<Product>LCOV Reports for PowerShell</Product>
-		<Version>3.0.1</Version>
+		<Version>2026.10.0</Version>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -23,7 +23,7 @@
 	<ItemGroup>
 		<InternalsVisibleTo Include="$(RootNamespace).Tests" />
 		<PackageReference Update="FSharp.Core" Version="10.1.402" />
-		<PackageReference Include="Belin.Lcov" Version="5.0.1" />
+		<PackageReference Include="Belin.Lcov" Version="2026.10.0" />
 		<PackageReference Include="System.Management.Automation" Version="7.6.7" />
 	</ItemGroup>
 

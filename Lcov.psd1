@@ -1,6 +1,6 @@
 @{
 	DefaultCommandPrefix = "Lcov"
-	ModuleVersion = "3.0.1"
+	ModuleVersion = "2026.10.0"
 	PowerShellVersion = "7.6"
 	RootModule = "Binaries/Belin.Lcov.PowerShell.dll"
 

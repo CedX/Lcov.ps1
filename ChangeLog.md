@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [2026.10.0](https://github.com/CedX/Lcov.ps1/compare/v3.0.1...v2026.10.0)
+- Switched to a year-based versioning.
+- Updated the package dependencies.
+
 ## Version [3.0.1](https://github.com/CedX/Lcov.ps1/compare/v3.0.0...v3.0.1)
 - Fixed a packaging issue.
 
