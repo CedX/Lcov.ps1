@@ -24,5 +24,5 @@ Install-PSResource Belin.Lcov -Repository PSGallery
 Now in your [PowerShell](https://learn.microsoft.com/en-us/powershell) code, you can use:
 
 ```powershell
-using module Belin.Lcov
+Import-Module Belin.Lcov
 ```

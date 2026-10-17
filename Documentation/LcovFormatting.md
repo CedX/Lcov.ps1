@@ -4,7 +4,7 @@ the corresponding data formatted as [LCOV](https://github.com/linux-test-project
 All you have to do is to create the adequate structure using these different cmdlets, and to export the final result:
 
 ```powershell
-using module Belin.Lcov
+Import-Module Belin.Lcov
 
 $functionCoverage = New-LcovFunctionCoverage -Found 1 -Hit 1
 $lineCoverage = New-LcovLineCoverage -Found 2 -Hit 1 -Data @(
