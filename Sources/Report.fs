@@ -29,17 +29,16 @@ type ConvertFromInfo() =
 
   /// Performs execution of this command.
   override this.ProcessRecord () =
-    let script =
-      StringBuilder("Get-ChildItem -File")
-        .Append(if this.ParameterSetName = "Path" then " -Path $args[0]" else " -LiteralPath $args[0]")
-        .Append(if this.Filter.Length > 0 then " -Filter $args[1]" else "")
-        .Append(if this.Recurse.IsPresent then " -Recurse" else "")
+    let scriptBlock = ScriptBlock.Create(string (StringBuilder("Get-ChildItem -File")
+      .Append(if this.ParameterSetName = "Path" then " -Path $args[0]" else " -LiteralPath $args[0]")
+      .Append(if this.Filter.Length > 0 then " -Filter $args[1]" else "")
+      .Append(if this.Recurse.IsPresent then " -Recurse" else "")))
 
-    let parameters = ResizeArray<obj>()
-    parameters.Add(if this.ParameterSetName = "Path" then this.Path else this.LiteralPath)
-    if this.Filter.Length > 0 then parameters.Add this.Filter
+    let arguments = ResizeArray<obj>()
+    arguments.Add(if this.ParameterSetName = "Path" then this.Path else this.LiteralPath)
+    if this.Filter.Length > 0 then arguments.Add this.Filter
 
-    for psObject in ScriptBlock.Create(string script).Invoke(parameters.ToArray()) do
+    for psObject in scriptBlock.Invoke(arguments.ToArray()) do
       let file = psObject.BaseObject :?> FileInfo
       try file.FullName |> File.ReadAllText |> Report.Parse |> this.WriteObject
       with :? FormatException as ex -> this.WriteError (ErrorRecord(ex, "Report.Parse", ErrorCategory.SyntaxError, file))
