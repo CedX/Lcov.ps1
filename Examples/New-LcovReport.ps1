@@ -2,7 +2,7 @@
 .SYNOPSIS
 	Formats coverage data as LCOV report.
 #>
-using module Belin.Lcov
+Import-Module Belin.Lcov
 
 $functions = New-LcovFunctionCoverage -Found 1 -Hit 1
 $lines = New-LcovLineCoverage -Found 2 -Hit 1 -Data @(
