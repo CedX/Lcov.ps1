@@ -21,7 +21,7 @@ type NewLineCoverage() =
 
   /// Performs execution of this command.
   override this.ProcessRecord () = this.WriteObject (LineCoverage (
-    Data = this.Data,
+    Data = ResizeArray this.Data,
     Found = this.Found,
     Hit = this.Hit
   ))

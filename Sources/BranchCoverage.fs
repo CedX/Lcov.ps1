@@ -21,7 +21,7 @@ type NewBranchCoverage() =
 
   /// Performs execution of this command.
   override this.ProcessRecord () = this.WriteObject (BranchCoverage (
-    Data = this.Data,
+    Data = ResizeArray this.Data,
     Found = this.Found,
     Hit = this.Hit
   ))

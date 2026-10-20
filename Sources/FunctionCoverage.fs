@@ -21,7 +21,7 @@ type NewFunctionCoverage() =
 
   /// Performs execution of this command.
   override this.ProcessRecord () = this.WriteObject (FunctionCoverage (
-    Data = this.Data,
+    Data = ResizeArray this.Data,
     Found = this.Found,
     Hit = this.Hit
   ))
