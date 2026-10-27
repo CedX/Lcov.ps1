@@ -1,7 +1,7 @@
 using module PSScriptAnalyzer
 using module ./Tools.psm1
 
-"Performing the static analysis of source code..."
+Write-Information "Performing the static analysis of source code..."
 Invoke-FSharpLint Lcov.slnx -Configuration Configuration/FSharpLint.json
 $PSScriptRoot, "Tests" | Invoke-ScriptAnalyzer -Recurse
 Test-ModuleManifest Lcov.psd1 | Out-Null
