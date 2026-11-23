@@ -13,15 +13,15 @@ type NewSourceFile() =
 
   /// The branch coverage.
   [<Parameter(ParameterSetName = "Default")>]
-  member val Branches: BranchCoverage | null = null with get, set
+  member val Branches: BranchCoverage|null = null with get, set
 
   /// The function coverage.
   [<Parameter(ParameterSetName = "Default")>]
-  member val Functions: FunctionCoverage | null = null with get, set
+  member val Functions: FunctionCoverage|null = null with get, set
 
   /// The line coverage.
   [<Parameter(ParameterSetName = "Default")>]
-  member val Lines: LineCoverage | null = null with get, set
+  member val Lines: LineCoverage|null = null with get, set
 
   /// Value indicating whether to populate the instance with default coverage values.
   [<Parameter(ParameterSetName = "WithCoverage")>]
